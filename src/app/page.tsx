@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/carousel";
 
 import CategoryBar from "@/components/CategoryBar";
-import ProductFeatured from "@/components/ProductFeatured";
+import ProductFeatured from "@/components/product/ProductFeatured";
 
 export default async function Home() {
   return (

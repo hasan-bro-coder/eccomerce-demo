@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { LuTruck } from "react-icons/lu";
 import { FaBicycle } from "react-icons/fa";
 import { GiSpring, GiBreakingChain } from "react-icons/gi";
 import { PiSeatFill } from "react-icons/pi";

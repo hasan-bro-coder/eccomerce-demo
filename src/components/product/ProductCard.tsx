@@ -34,7 +34,7 @@ export default function ProductCard({ product,delay }: ProductCardProps) {
       <div className="gradient-card rounded-2xl overflow-hidden card-hover group border-accent border-[1px] " data-aos="fade-up" data-aos-delay={delay}>
         <div className="relative aspect-square overflow-hidden">
           <Image
-            src={imageUrl}
+            src={imageUrl[0]}
             alt={product.name}
             fill
             className="object-cover group-hover:scale-105 transition-transform duration-300"

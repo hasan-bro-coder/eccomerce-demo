@@ -1,11 +1,11 @@
 import { supabase } from "@/utils/supabase/client";
 import ProductCard from "./ProductCard";
 import Link from "next/link";
-import { Button } from "./ui/button";
+import { Button } from "../ui/button";
 
 export default async function ProductFeatured() {
   let { data, error } = await supabase.from("products").select("*");
-  const featuredProducts = data?.splice(0, 4) || [];
+  const featuredProducts = data?.splice(0, 16) || [];
   return (
     <section className="py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
