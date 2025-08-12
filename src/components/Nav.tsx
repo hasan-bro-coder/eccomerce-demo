@@ -1,0 +1,378 @@
+"use client";
+import { LuMenu } from "react-icons/lu";
+import { FaBicycle } from "react-icons/fa";
+import { GiSpring, GiBreakingChain } from "react-icons/gi";
+import { PiSeatFill } from "react-icons/pi";
+import { FaCartShopping } from "react-icons/fa6";
+
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import { Button } from "@/components/ui/button";
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+} from "@/components/ui/navigation-menu";
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+import { Input } from "./ui/input";
+import { SearchIcon } from "lucide-react";
+import Link from "next/link";
+
+interface MenuItem {
+  title: string;
+  url: string;
+  description?: string;
+  icon?: React.ReactNode;
+  items?: MenuItem[];
+}
+
+interface Navbar1Props {
+  logo?: {
+    url: string;
+    src: string;
+    alt: string;
+    title: string;
+  };
+  menu?: MenuItem[];
+  auth?: {
+    login: {
+      title: string;
+      url: string;
+    };
+    signup: {
+      title: string;
+      url: string;
+    };
+  };
+}
+
+const Nav = ({
+  logo = {
+    url: "/",
+    src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/shadcnblockscom-icon.svg",
+    alt: "logo",
+    title: "Shadcnblocks.com",
+  },
+  menu = [
+    { title: "Home", url: "/" },
+    {
+      title: "Products",
+      url: "/products",
+      items: [
+        {
+          title: "Frame",
+          url: "/products?category=frame",
+          icon: <FaBicycle />,
+        },
+        {
+          title: "Suspension",
+          url: "/products?category=suspension",
+          icon: <GiSpring />,
+        },
+        {
+          title: "Brake",
+          url: "/products?category=brake",
+          icon: (
+            <svg
+              className="fill-accent-foreground w-[24px] h-[24px]"
+              xmlns="http://www.w3.org/2000/svg"
+              id="Layer_1"
+              data-name="Layer 1"
+              viewBox="0 0 409.6 409.6"
+            >
+              <path d="M0,228.8v-24a15.89,15.89,0,0,0,.66-2.68A183,183,0,0,1,27,118.85c31.44-51.44,77-82.47,136.52-92.47,9.52-1.6,19.24-2,29.22-3,.34-8.6-2.34-18.69,8.83-23.4h15.2a20.93,20.93,0,0,0,3.08.67c28.6,2,55.67,9.56,80.69,23.42,57.76,32,93.31,80.43,105.82,145.43,1.48,7.68,2.16,15.52,3.21,23.28V208c-4.93,11.58-15.46,8.28-24.55,8.88-.42,6.77-.57,13.28-1.26,19.73-3.77,34.77-15.64,66.52-36.62,94.56-30.44,40.66-70.62,66.05-120.71,75.31-7.17,1.33-14.44,2.09-21.66,3.12h-24c-2.48-.31-5-.65-7.44-.93-37.71-4.19-71.62-17.78-101.09-41.74C35,336.63,11.77,297.81,3.1,250.46,1.79,243.29,1,236,0,228.8ZM192.8,48.4C135.31,46.85,70.92,80.32,40.32,144.66,8.76,211,23.74,287.18,74.57,337c56.34,55.21,136.87,61.87,198.13,28.18,63.07-34.68,89.63-99.82,87.56-148.4-11.56,0-23.14.08-34.71,0-7.69-.07-12.3-4.79-12.79-12.43a155.14,155.14,0,0,0-1.55-16.7c-6.19-36-25.56-62.55-57.73-79.73-15-8-31.13-11.42-48-11.88-7.93-.22-12.52-5-12.65-12.93,0-1.74,0-3.47,0-5.2Zm192,144.22C380,103,304.83,29.25,217.1,24.83v47C285.82,84,325.28,124.24,336.94,192.62Z"></path>
+              <path d="M288.79,217c-.19,52.82-43.4,95.91-96.09,95.81s-95.91-43.29-95.89-96c0-53.23,43.36-96.87,96.09-96.77S289,163.84,288.79,217Zm-24,0c.15-39.88-32-72.67-71.58-73s-72.22,32.43-72.4,72.56c-.17,39.53,32.15,72.05,71.78,72.22S264.64,256.62,264.79,217Z"></path>
+              <path d="M60.94,228.77a12,12,0,1,1,11.83-12.11A12.08,12.08,0,0,1,60.94,228.77Z"></path>
+              <path d="M192.7,360.77a12,12,0,1,1,12.07-11.87A12.08,12.08,0,0,1,192.7,360.77Z"></path>
+              <path d="M111.35,122.54a11.74,11.74,0,0,1-11.77,12,11.93,11.93,0,0,1-12.11-11.78,12.15,12.15,0,0,1,11.87-12.1A11.9,11.9,0,0,1,111.35,122.54Z"></path>
+              <path d="M111.36,310.1a11.93,11.93,0,0,1-11.86,12,12.13,12.13,0,0,1-12-11.95,11.89,11.89,0,0,1,11.94-11.93A11.75,11.75,0,0,1,111.36,310.1Z"></path>
+              <path d="M274.25,310.23a11.74,11.74,0,0,1,11.79-12A11.94,11.94,0,0,1,298.13,310a12.15,12.15,0,0,1-11.9,12.08A11.9,11.9,0,0,1,274.25,310.23Z"></path>
+              <path d="M240.79,216.83a48,48,0,1,1-48.06-48A48.13,48.13,0,0,1,240.79,216.83Zm-48,23.94a24,24,0,1,0-23.91-23.93A24.18,24.18,0,0,0,192.74,240.77Z"></path>
+            </svg>
+          ),
+        },
+        {
+          url: "/products?category=hubs",
+
+          title: "Hubs",
+          icon: (
+            <svg
+              className="fill-accent-foreground w-[24px] h-[24px]"
+              xmlns="http://www.w3.org/2000/svg"
+              xmlnsXlink="http://www.w3.org/1999/xlink"
+              id="Layer_1"
+              x="0px"
+              y="0px"
+              viewBox="0 0 538 534"
+              xmlSpace="preserve"
+            >
+              <g>
+                {" "}
+                <path d="M24.26,375.44c-2.99-8.74-5.33-17.48-4.29-26.98c2.57-23.51,23.41-42.05,46.98-41.8c3.57,0.04,7.66-1.15,10.65-3.09   c15.98-10.35,31.69-21.13,48.1-32.16c-1.93-2.86-3.66-5.41-5.36-7.98c-15.09-22.79-11.4-48.68,9.67-65.88   c2.81-2.29,3.47-4.23,3.12-7.8c-1.36-14.01,3.57-25.52,15.47-33.38c11.88-7.85,24.38-8.01,36.75-1.24c3.1,1.69,5.05,1.56,7.86-0.35   c18.2-12.42,36.47-24.72,54.85-36.88c2.89-1.91,3.5-3.71,3.13-7.16c-1.49-14.23,3.47-25.89,15.59-33.84   c11.91-7.81,24.28-7.64,36.86-1.24c1.76,0.89,4.78,1.33,6.27,0.42c22.27-13.51,49.77-7.17,63.56,11.92c0.3,0.42,0.84,0.66,1.56,1.2   c6.19-4.16,12.41-8.34,19.41-13.05c-2.08-3.09-4.2-6.03-6.1-9.11c-4.82-7.82-2.15-15.95,6.67-18.49   c23.79-6.85,47.65-13.47,71.6-19.72c3.35-0.87,7.4,0.9,11.12,1.46c14.47,21.52,28.94,43.03,43.41,64.55   c1.16,5.77-1.14,10.34-4.6,14.77c-13.64,17.48-27.13,35.08-40.67,52.63c-8.49,11.01-16.27,10.78-24.04-0.7   c-1.33-1.96-2.64-3.93-4.34-6.46c-3.59,2.42-6.77,4.55-9.94,6.69c-3.06,2.06-6.13,4.12-8.52,5.73c2.25,8.25,5.43,15.86,6.22,23.72   c1.6,15.9-4.13,29.45-16.67,39.65c-3.71,3.02-5.26,5.82-4.8,11.05c1.2,13.61-4.39,24.7-15.92,32.08   c-11.53,7.38-23.84,7.65-35.85,1.14c-3.56-1.93-5.75-1.59-8.83,0.51c-17.89,12.21-35.87,24.3-53.92,36.27   c-2.95,1.95-4.01,3.74-3.58,7.56c1.57,13.8-3.35,25.26-14.81,33.19c-11.45,7.92-23.97,8.65-36.24,2.11   c-4.13-2.2-6.91-1.68-10.55,0.27c-18.46,9.94-39.2,7.75-54.49-6.36c-5.48-5.06-9.63-11.56-14.56-17.63   c-15.98,10.75-32.02,21.54-48.28,32.47c11.04,18.27,22.14,35.5,43.58,43.34c26.77,9.79,42.95,29.82,50.49,57.06   c3.01,10.87,6.04,21.73,8.93,32.63c1.92,7.25,0.51,11.04-5.57,15.27c-5.62,3.92-11.29,7.76-17.05,11.47   c-7.54,4.85-13.42,3.7-18.59-3.58c-3.21-4.53-6.36-9.12-9.3-13.82c-9-14.4-21.45-24.17-37.79-29.09   c-16.5-4.97-31.81-12.19-43.53-25.37c-7.01-7.88-13.8-15.95-20.62-24c-11.37-13.41-22.67-26.87-34.03-40.28   c-0.8-0.95-1.88-1.67-2.82-2.5C28.4,381.59,26.33,378.52,24.26,375.44z M224.28,248.24c-14.56-21.66-29.12-43.32-43.7-64.96   c-1.24-1.84-2.48-3.71-3.97-5.34c-3.65-4.01-9.43-4.89-14.21-2.34c-4.54,2.42-6.98,8.11-5.41,13.31c0.63,2.08,1.71,4.1,2.93,5.92   c29.81,44.41,59.66,88.8,89.55,133.16c1.22,1.81,2.72,3.56,4.43,4.9c4.06,3.19,9.91,3.05,13.89-0.04c4.25-3.3,5.81-9.05,3.57-13.92   c-0.92-2-2.18-3.86-3.42-5.7C253.42,291.55,238.85,269.89,224.28,248.24z M342.19,168.7c-14.56-21.66-29.12-43.32-43.7-64.96   c-1.24-1.84-2.49-3.71-3.99-5.32c-3.65-3.93-9.58-4.72-14.25-2.1c-4.27,2.4-6.79,8-5.3,12.88c0.79,2.59,2.23,5.07,3.75,7.35   c29.29,43.65,58.62,87.27,88,130.86c1.43,2.12,3.04,4.26,4.99,5.87c4.62,3.83,10.74,3.37,15.06-0.77   c4.75-4.56,4.96-10.11,0.36-16.99C372.17,213.22,357.16,190.97,342.19,168.7z M76.69,347.58c-3.54-5.43-10.53-6.97-15.98-3.51   c-5.55,3.52-7.18,11.13-3.53,16.47c3.47,5.08,11.12,6.58,16.24,3.18C78.63,360.28,80.13,352.86,76.69,347.58z"></path>
+              </g>
+            </svg>
+          ),
+        },
+        {
+          title: "Crankset",
+          url: "/products?category=crankset",
+          icon: (
+            <svg
+              className="fill-accent-foreground w-[24px] h-[24px]"
+              xmlns="http://www.w3.org/2000/svg"
+              xmlnsXlink="http://www.w3.org/1999/xlink"
+              id="Layer_1"
+              x="0px"
+              y="0px"
+              viewBox="0 0 538 534"
+              xmlSpace="preserve"
+            >
+              <g>
+                {" "}
+                <path d="M357.85,480.52c-17.32-9.09-34.63,2.77-33.9,21.22c-7.14-5.44-14.72-7.62-23.05-4.49c-8.51,3.2-12.99,9.68-14.31,19.31   c-5.96-7-13-10.4-21.81-8.93c-8.98,1.5-14.49,7.06-17.74,16.14c-4.79-8.04-11.27-12.71-20.18-12.62   c-8.71,0.09-15.32,4.25-19.87,12.76c-3.34-8.82-8.65-14.63-17.52-16.23c-8.9-1.61-16.08,1.63-21.96,8.53   c-3.98-20.91-24.3-25.43-37.66-14.4c0.15-9.04-2.61-16.41-10.2-21.15c-7.7-4.82-15.57-4.45-23.96,0.13   c2.04-9.17,0.32-16.89-6.34-22.94c-6.52-5.92-14.17-7.13-23.22-4.16c3.23-8.63,3.34-16.51-2.12-23.66   c-5.39-7.05-12.69-9.56-22.13-8.28c4.83-7.93,6.33-15.69,2.32-23.75c-3.97-7.97-10.74-11.66-20.17-12.35   c6.03-6.69,9.05-13.91,6.62-22.6c-2.45-8.75-8.58-13.6-17.22-16.01c14.41-11.47,14.27-30.27-3.35-40.13   c15.98-8.47,19.19-26.92,3.78-39.79c19.29-6.54,22.65-25.07,10.78-38.5c20.21-2.74,26.97-20.38,17.62-36.2   c8.89,0.82,16.49-1.31,21.84-8.58c5.24-7.11,5.57-14.82,1.9-23.46c8.97,2.7,16.83,1.79,23.43-4.34c6.44-5.98,8.42-13.46,6.2-22.79   c8.22,4.19,16.04,4.94,23.68,0.24c7.74-4.75,10.76-12.01,10.5-21.01c17.83,12.4,35.02,2.35,37.64-14.49   c14.67,15.86,34.45,8.05,39.33-7.68c4.73,7.76,11.13,12.55,20.03,12.51c8.74-0.04,15.37-4.16,20.03-12.78   c3.27,8.76,8.57,14.61,17.37,16.2c8.86,1.6,16.18-1.31,22.24-8.89c1.46,9.15,5.59,15.92,13.93,19.17   c8.35,3.25,16.11,1.68,23.4-4.42c0.2,2.2,0.31,3.86,0.52,5.51c1.24,9.97,8.96,17.72,18.91,18.99c4.78,0.61,8.6-0.6,12.28-4.19   c40.5-39.49,81.19-78.79,121.78-118.2c9.06-8.8,19.5-12.25,31.7-8.35c20.93,6.7,27.38,32.51,12.2,49.06   c-8.99,9.81-18.45,19.18-27.71,28.74c-32.05,33.09-64.1,66.17-96.14,99.26c-1.31,1.36-2.56,2.78-3.99,4.35   c5.25,5,11.35,5.65,18.53,5.07c-4.65,7.76-6.2,15.47-2.24,23.51c4.01,8.13,10.98,11.75,19.87,12.47   c-12.72,14.74-7.71,32.83,11.07,38.93c-7.27,5.3-11.29,12.12-10.34,21.05c0.93,8.71,5.8,14.74,14.52,18.6   c-8.63,4.04-13.8,10.06-14.59,18.97c-0.77,8.78,3.06,15.56,10.77,20.99c-8.89,2.56-15.23,7.23-17.68,16   c-2.4,8.59,0.14,15.82,6.64,22.63c-9.04,0.89-16.13,4.29-20.14,12.3c-4.05,8.09-2.79,15.88,1.98,23.48   c-18.28-1.65-31,12.79-24.54,31.8C366.34,448.03,354.34,464.26,357.85,480.52z M261.12,471.21c-0.47-1.66-0.9-3.31-1.41-4.94   c-14.86-46.99-29.76-93.96-44.52-140.98c-1.1-3.52-2.84-5.45-6.43-6.57c-44.17-13.88-88.29-27.93-132.43-41.9   c-4.55-1.44-9.16-2.71-13.79-4.08C37.75,394.45,146.45,496.48,261.12,471.21z M391.51,341.53c8.74-46.13,0.69-88.08-24.45-127.41   c-13.05,13.48-25.64,26.36-37.99,39.47c-1.02,1.08-0.98,3.95-0.39,5.61c2.84,7.98,9.14,11.71,18.28,12.68   c-7.17,5.29-9.86,11.53-8.84,19.34c1.02,7.82,6.17,12.39,12.7,16.39c-2.99,0.69-5.91,1.34-8.41,0.59   c-15.72-4.75-31.33-9.86-47.02-14.71c-1.59-0.49-3.99-0.67-5.14,0.18c-4.33,3.21-8.3,6.92-12.41,10.44   c0.4,0.59,0.81,1.18,1.21,1.78C316.29,317.68,353.52,329.48,391.51,341.53z M244.56,183.06c2.08,8.46,6.26,14,13.86,16.21   c7.59,2.2,14.28,0.08,19.96-5.53c0.62,3.85,1.14,7.04,1.85,11.41c13.72-13.3,26.47-25.67,39.57-38.36   c-39.5-25.13-81.5-33.24-127.43-24.37c12.01,37.89,23.83,75.16,35.64,112.43c0.58,0.41,1.15,0.82,1.73,1.23   c2.65-3.24,4.96-6.87,8.05-9.62c3.24-2.87,3.65-5.44,2.3-9.46c-4.68-13.86-8.92-27.86-13.43-42.13   C234.6,194.14,240.48,190.89,244.56,183.06z M160.31,152.58c-40.49,18.31-69.51,47.28-87.8,87.81   c18.03,5.7,35.55,11.24,53.08,16.78c0.53-0.34,1.06-0.68,1.59-1.02c-1.21-5.41-2.43-10.83-3.68-16.44   c6.8,1.07,13.56-0.39,18.65-6.41c5.09-6.03,5.71-12.95,3.06-20.55c2.52,0.95,4.27,1.78,6.11,2.28c11.61,3.16,25.8-7.66,22.93-17.97   C170.14,182.29,165.11,167.76,160.31,152.58z M293.51,461.41c40.49-18.3,69.47-47.32,87.8-87.83   c-18.01-5.69-35.52-11.23-53.03-16.76c-0.53,0.37-1.05,0.74-1.58,1.1c1.21,5.43,2.41,10.86,3.56,16.03   c-14.93-2-26.79,9.51-22.24,26.36c-3.8-0.6-7.86-1.9-11.86-1.74c-9.78,0.4-18.93,10.45-16.62,18.42   C283.82,431.73,288.72,446.28,293.51,461.41z M492.55,51.15c5.63-5.61,11.09-11.04,16.41-16.34c-3.16-3.28-6.76-7.01-9.72-10.07   c-5.61,5.6-11.07,11.04-16.14,16.1C486.21,44.21,489.71,48.04,492.55,51.15z"></path>{" "}
+                <path d="M227.21,419.13c-8.15,0.75-14.01,4.03-17.85,11.69c-2.24-8.17-6.3-14.03-14.08-16.14c-7.47-2.03-14.16-0.28-19.75,5.68   c-2.67-19.25-13.69-26.18-30.35-19.02c2.57-7.49,2.11-14.33-2.81-20.38c-5.04-6.2-11.77-7.77-20.13-6.49   c4.17-6.85,5.89-13.55,2.66-20.63c-3.28-7.19-9.04-10.89-18.1-11.47c6.66-5.12,9.89-11.15,8.96-18.9   c-0.94-7.91-5.46-13.02-12.74-15.99c0-0.49,0.01-0.98,0.01-1.46c2.42-0.25,5.08-1.3,7.22-0.63c29.04,9.02,58.02,18.26,86.97,27.57   c1.4,0.45,3.08,1.87,3.51,3.2C209.59,363.58,218.29,391.06,227.21,419.13z"></path>
+              </g>
+            </svg>
+          ),
+        },
+        {
+          title: "Saddle",
+          url: "/products?category=saddle",
+          icon: <PiSeatFill></PiSeatFill>,
+        },
+        // { id: 'derailleur', title: 'Derailleur', icon: <></> },
+        {
+          title: "Chain",
+          url: "/products?category=chain",
+          icon: <GiBreakingChain></GiBreakingChain>,
+        },
+      ],
+    },
+
+    {
+      title: "Pricing",
+      url: "#",
+    },
+    {
+      title: "Blog",
+      url: "#",
+    },
+  ],
+  auth = {
+    login: { title: "Login", url: "/login" },
+    signup: { title: "Sign up", url: "/signup" },
+  },
+}: Navbar1Props) => {
+  return (
+    <nav className="py-4 px-6">
+      <div className="">
+        {/* Desktop Menu */}
+        <div className="hidden justify-between lg:flex">
+          <div className="flex items-center gap-6">
+            {/* Logo */}
+            <a href={logo.url} className="flex items-center gap-2">
+              <img
+                src={logo.src}
+                className="max-h-8 dark:invert"
+                alt={logo.alt}
+              />
+              <span className="text-lg font-semibold tracking-tighter">
+                {logo.title}
+              </span>
+            </a>
+            <div className="flex items-center">
+              <NavigationMenu>
+                <NavigationMenuList>
+                  {menu.map((item) => renderMenuItem(item))}
+                </NavigationMenuList>
+              </NavigationMenu>
+            </div>
+          </div>
+
+          <div className="flex gap-2">
+            <div className="flex">
+              <Input
+                type="search"
+                placeholder="Search"
+                className="w-full max-w-sm  h-9 font-semibold bg-background border border-accent border-r-0! rounded-tr-none! rounded-br-none!"
+              />
+              <Button
+                variant="default"
+                className="border-l-0! rounded-tl-none! rounded-bl-none!"
+              >
+                <SearchIcon></SearchIcon>
+              </Button>
+            </div>
+            <Button asChild variant="outline">
+              <a href={auth.login.url}>{auth.login.title}</a>
+            </Button>
+            <Button asChild>
+              <a href={auth.signup.url}>{auth.signup.title}</a>
+            </Button>
+            <Link href="/cart" >
+              <Button>
+                <FaCartShopping></FaCartShopping>
+              </Button>
+            </Link>
+          </div>
+        </div>
+
+        {/* Mobile Menu */}
+        <div className="block lg:hidden">
+          <div className="flex items-center justify-between">
+            {/* Logo */}
+            <a href={logo.url} className="flex items-center gap-2">
+              <img
+                src={logo.src}
+                className="max-h-8 dark:invert"
+                alt={logo.alt}
+              />
+            </a>
+            <Sheet>
+              <SheetTrigger asChild>
+                <Button variant="outline" size="icon">
+                  <LuMenu className="size-4" />
+                </Button>
+              </SheetTrigger>
+              <SheetContent className="overflow-y-auto">
+                <SheetHeader>
+                  <SheetTitle>
+                    <a href={logo.url} className="flex items-center gap-2">
+                      <img
+                        src={logo.src}
+                        className="max-h-8 dark:invert"
+                        alt={logo.alt}
+                      />
+                    </a>
+                  </SheetTitle>
+                </SheetHeader>
+                <div className="flex flex-col gap-6 p-4">
+                  <Accordion
+                    type="single"
+                    collapsible
+                    className="flex w-full flex-col gap-4"
+                  >
+                    {menu.map((item) => renderMobileMenuItem(item))}
+                  </Accordion>
+
+                  <div className="flex flex-col gap-3">
+                    <div className="flex">
+                      <Input
+                        type="search"
+                        placeholder="Search"
+                        className="w-full max-w-sm  h-9 font-semibold bg-background border border-accent border-r-0! rounded-tr-none! rounded-br-none!"
+                      />
+                      <Button
+                        variant="default"
+                        className="border-l-0! rounded-tl-none! rounded-bl-none!"
+                      >
+                        {" "}
+                        <SearchIcon></SearchIcon>{" "}
+                      </Button>
+                    </div>
+                    <Button asChild variant="outline">
+                      <a href={auth.login.url}>{auth.login.title}</a>
+                    </Button>
+                    <Button asChild>
+                      <a href={auth.signup.url}>{auth.signup.title}</a>
+                    </Button>
+                    <Link href="/cart" className="w-full" >
+                      <Button className="w-full">
+                        <FaCartShopping></FaCartShopping>
+                      </Button>
+                    </Link>
+                  </div>
+                </div>
+              </SheetContent>
+            </Sheet>
+          </div>
+        </div>
+      </div>
+    </nav>
+  );
+};
+
+const renderMenuItem = (item: MenuItem) => {
+  if (item.items) {
+    return (
+      <NavigationMenuItem key={item.title}>
+        <NavigationMenuTrigger>{item.title}</NavigationMenuTrigger>
+        <NavigationMenuContent className="bg-popover text-popover-foreground z-10">
+          {item.items.map((subItem) => (
+            <NavigationMenuLink asChild key={subItem.title} className="w-80">
+              <SubMenuLink item={subItem} />
+            </NavigationMenuLink>
+          ))}
+        </NavigationMenuContent>
+      </NavigationMenuItem>
+    );
+  }
+
+  return (
+    <NavigationMenuItem key={item.title}>
+      <NavigationMenuLink
+        href={item.url}
+        className="bg-background hover:bg-muted hover:text-accent-foreground group inline-flex h-10 w-max items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors"
+      >
+        {item.title}
+      </NavigationMenuLink>
+    </NavigationMenuItem>
+  );
+};
+
+const renderMobileMenuItem = (item: MenuItem) => {
+  if (item.items) {
+    return (
+      <AccordionItem key={item.title} value={item.title} className="border-b-0">
+        <AccordionTrigger className="text-md py-0 font-semibold hover:no-underline">
+          {item.title}
+        </AccordionTrigger>
+        <AccordionContent className="mt-2">
+          {item.items.map((subItem) => (
+            <SubMenuLink key={subItem.title} item={subItem} />
+          ))}
+        </AccordionContent>
+      </AccordionItem>
+    );
+  }
+
+  return (
+    <a key={item.title} href={item.url} className="text-md font-semibold">
+      {item.title}
+    </a>
+  );
+};
+
+const SubMenuLink = ({ item }: { item: MenuItem }) => {
+  return (
+    <a
+      className="hover:bg-muted hover:text-accent-foreground flex select-none flex-row gap-4 rounded-md p-3 leading-none no-underline outline-none transition-colors"
+      href={item.url}
+    >
+      <div className="text-foreground">{item.icon}</div>
+      <div>
+        <div className="text-sm font-semibold">{item.title}</div>
+        {item.description && (
+          <p className="text-muted-foreground text-sm leading-snug">
+            {item.description}
+          </p>
+        )}
+      </div>
+    </a>
+  );
+};
+
+export default Nav;
